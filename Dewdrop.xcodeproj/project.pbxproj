@@ -1,0 +1,331 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		14BC84BE17C7BFAC007A223E /* Icon.iconset in Resources */ = {isa = PBXBuildFile; fileRef = 14BC84BD17C7BFAC007A223E /* Icon.iconset */; };
+		14D7BE6817C7FFC500ED6095 /* LaunchAtLoginController.m in Sources */ = {isa = PBXBuildFile; fileRef = 14D7BE6717C7FFC500ED6095 /* LaunchAtLoginController.m */; };
+		14D931F717C3EA0D0000C3CB /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 14D931F617C3EA0D0000C3CB /* Cocoa.framework */; };
+		14D9320117C3EA0D0000C3CB /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 14D931FF17C3EA0D0000C3CB /* InfoPlist.strings */; };
+		14D9320317C3EA0D0000C3CB /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 14D9320217C3EA0D0000C3CB /* main.m */; };
+		14D9320A17C3EA0D0000C3CB /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 14D9320917C3EA0D0000C3CB /* AppDelegate.m */; };
+		14D9320D17C3EA0D0000C3CB /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 14D9320B17C3EA0D0000C3CB /* MainMenu.xib */; };
+		14D9321A17C3F03C0000C3CB /* DADropStatus.m in Sources */ = {isa = PBXBuildFile; fileRef = 14D9321917C3F03C0000C3CB /* DADropStatus.m */; };
+		14D9321F17C4A2530000C3CB /* RequestQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 14D9321E17C4A1810000C3CB /* RequestQueue.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		14BC84BD17C7BFAC007A223E /* Icon.iconset */ = {isa = PBXFileReference; lastKnownFileType = folder.iconset; path = Icon.iconset; sourceTree = "<group>"; };
+		14D7BE6617C7FFC500ED6095 /* LaunchAtLoginController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LaunchAtLoginController.h; sourceTree = "<group>"; };
+		14D7BE6717C7FFC500ED6095 /* LaunchAtLoginController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LaunchAtLoginController.m; sourceTree = "<group>"; };
+		14D931F317C3EA0D0000C3CB /* Dewdrop.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Dewdrop.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		14D931F617C3EA0D0000C3CB /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
+		14D931F917C3EA0D0000C3CB /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
+		14D931FA17C3EA0D0000C3CB /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		14D931FB17C3EA0D0000C3CB /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		14D931FE17C3EA0D0000C3CB /* Dewdrop-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Dewdrop-Info.plist"; sourceTree = "<group>"; };
+		14D9320017C3EA0D0000C3CB /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		14D9320217C3EA0D0000C3CB /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		14D9320417C3EA0D0000C3CB /* Dewdrop-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Dewdrop-Prefix.pch"; sourceTree = "<group>"; };
+		14D9320817C3EA0D0000C3CB /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		14D9320917C3EA0D0000C3CB /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		14D9320C17C3EA0D0000C3CB /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		14D9321817C3F03C0000C3CB /* DADropStatus.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DADropStatus.h; path = Dewdrop/DADropStatus.h; sourceTree = "<group>"; };
+		14D9321917C3F03C0000C3CB /* DADropStatus.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DADropStatus.m; path = Dewdrop/DADropStatus.m; sourceTree = "<group>"; };
+		14D9321D17C4A1810000C3CB /* RequestQueue.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RequestQueue.h; sourceTree = "<group>"; };
+		14D9321E17C4A1810000C3CB /* RequestQueue.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RequestQueue.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		14D931F017C3EA0D0000C3CB /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				14D931F717C3EA0D0000C3CB /* Cocoa.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		14D931EA17C3EA0D0000C3CB = {
+			isa = PBXGroup;
+			children = (
+				14BC84BD17C7BFAC007A223E /* Icon.iconset */,
+				14D9321C17C4A1750000C3CB /* Classes */,
+				14D931FC17C3EA0D0000C3CB /* Dewdrop */,
+				14D931F517C3EA0D0000C3CB /* Frameworks */,
+				14D931F417C3EA0D0000C3CB /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		14D931F417C3EA0D0000C3CB /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				14D931F317C3EA0D0000C3CB /* Dewdrop.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		14D931F517C3EA0D0000C3CB /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				14D931F617C3EA0D0000C3CB /* Cocoa.framework */,
+				14D931F817C3EA0D0000C3CB /* Other Frameworks */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		14D931F817C3EA0D0000C3CB /* Other Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				14D931F917C3EA0D0000C3CB /* AppKit.framework */,
+				14D931FA17C3EA0D0000C3CB /* CoreData.framework */,
+				14D931FB17C3EA0D0000C3CB /* Foundation.framework */,
+			);
+			name = "Other Frameworks";
+			sourceTree = "<group>";
+		};
+		14D931FC17C3EA0D0000C3CB /* Dewdrop */ = {
+			isa = PBXGroup;
+			children = (
+				14D9320817C3EA0D0000C3CB /* AppDelegate.h */,
+				14D9320917C3EA0D0000C3CB /* AppDelegate.m */,
+				14D9320B17C3EA0D0000C3CB /* MainMenu.xib */,
+				14D931FD17C3EA0D0000C3CB /* Supporting Files */,
+			);
+			path = Dewdrop;
+			sourceTree = "<group>";
+		};
+		14D931FD17C3EA0D0000C3CB /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				14D931FE17C3EA0D0000C3CB /* Dewdrop-Info.plist */,
+				14D931FF17C3EA0D0000C3CB /* InfoPlist.strings */,
+				14D9320217C3EA0D0000C3CB /* main.m */,
+				14D9320417C3EA0D0000C3CB /* Dewdrop-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		14D9321C17C4A1750000C3CB /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				14D7BE6617C7FFC500ED6095 /* LaunchAtLoginController.h */,
+				14D7BE6717C7FFC500ED6095 /* LaunchAtLoginController.m */,
+				14D9321817C3F03C0000C3CB /* DADropStatus.h */,
+				14D9321917C3F03C0000C3CB /* DADropStatus.m */,
+				14D9321D17C4A1810000C3CB /* RequestQueue.h */,
+				14D9321E17C4A1810000C3CB /* RequestQueue.m */,
+			);
+			name = Classes;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		14D931F217C3EA0D0000C3CB /* Dewdrop */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 14D9321017C3EA0D0000C3CB /* Build configuration list for PBXNativeTarget "Dewdrop" */;
+			buildPhases = (
+				14D931EF17C3EA0D0000C3CB /* Sources */,
+				14D931F017C3EA0D0000C3CB /* Frameworks */,
+				14D931F117C3EA0D0000C3CB /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Dewdrop;
+			productName = Dewdrop;
+			productReference = 14D931F317C3EA0D0000C3CB /* Dewdrop.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		14D931EB17C3EA0D0000C3CB /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0460;
+				ORGANIZATIONNAME = "Dino Angelov";
+			};
+			buildConfigurationList = 14D931EE17C3EA0D0000C3CB /* Build configuration list for PBXProject "Dewdrop" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 14D931EA17C3EA0D0000C3CB;
+			productRefGroup = 14D931F417C3EA0D0000C3CB /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				14D931F217C3EA0D0000C3CB /* Dewdrop */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		14D931F117C3EA0D0000C3CB /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				14D9320117C3EA0D0000C3CB /* InfoPlist.strings in Resources */,
+				14D9320D17C3EA0D0000C3CB /* MainMenu.xib in Resources */,
+				14BC84BE17C7BFAC007A223E /* Icon.iconset in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		14D931EF17C3EA0D0000C3CB /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				14D9321F17C4A2530000C3CB /* RequestQueue.m in Sources */,
+				14D9320317C3EA0D0000C3CB /* main.m in Sources */,
+				14D9320A17C3EA0D0000C3CB /* AppDelegate.m in Sources */,
+				14D9321A17C3F03C0000C3CB /* DADropStatus.m in Sources */,
+				14D7BE6817C7FFC500ED6095 /* LaunchAtLoginController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		14D931FF17C3EA0D0000C3CB /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				14D9320017C3EA0D0000C3CB /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		14D9320B17C3EA0D0000C3CB /* MainMenu.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				14D9320C17C3EA0D0000C3CB /* en */,
+			);
+			name = MainMenu.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		14D9320E17C3EA0D0000C3CB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		14D9320F17C3EA0D0000C3CB /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		14D9321117C3EA0D0000C3CB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Dewdrop/Dewdrop-Prefix.pch";
+				INFOPLIST_FILE = "Dewdrop/Dewdrop-Info.plist";
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		14D9321217C3EA0D0000C3CB /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Dewdrop/Dewdrop-Prefix.pch";
+				INFOPLIST_FILE = "Dewdrop/Dewdrop-Info.plist";
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		14D931EE17C3EA0D0000C3CB /* Build configuration list for PBXProject "Dewdrop" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				14D9320E17C3EA0D0000C3CB /* Debug */,
+				14D9320F17C3EA0D0000C3CB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		14D9321017C3EA0D0000C3CB /* Build configuration list for PBXNativeTarget "Dewdrop" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				14D9321117C3EA0D0000C3CB /* Debug */,
+				14D9321217C3EA0D0000C3CB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 14D931EB17C3EA0D0000C3CB /* Project object */;
+}
