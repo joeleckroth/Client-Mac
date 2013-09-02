@@ -7,21 +7,17 @@
 //
 
 #import "AppDelegate.h"
-#import "RequestQueue.h"
-#import "LaunchAtLoginController.h"
 
 @implementation AppDelegate
 
+@synthesize statusItemView = _statusItemView;
+
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
-    statusItem = [[[NSStatusBar systemStatusBar] statusItemWithLength:NSVariableStatusItemLength] self];
-    
-    [statusItem setToolTip:@"Dewdrop 0.1"];
-    [statusItem setHighlightMode:YES];
-    
-    dropView = [[DADropStatus alloc] initWithFrame:NSMakeRect(0, 0, 24, 24)];
-    [statusItem setView:dropView];
-    [dropView setMenu:_menu];
+    // Install icon into the menu bar
+    NSStatusItem *stockStatusItem = [[NSStatusBar systemStatusBar] statusItemWithLength:24];
+    _statusItemView = [[StatusItemView alloc] initWithStatusItem:stockStatusItem];
+    [_statusItemView setMenu:_menu];
     
     if ([NSUserNotification class] && [NSUserNotificationCenter class]){
 		[[NSUserNotificationCenter defaultUserNotificationCenter] setDelegate:self];
@@ -30,14 +26,22 @@
     LaunchAtLoginController *launchController = [[LaunchAtLoginController alloc] init];
     BOOL launch = [launchController launchAtLogin];
     [_launchOnLogin setState:launch];
+    
+    self.shortcutView.associatedUserDefaultsKey = @"GlobalShortcut";
+    [MASShortcut registerGlobalShortcutWithUserDefaultsKey:@"GlobalShortcut" handler:^{
+        [self uploadFinderSelection:self];
+    }];
+    
+    lastUploadURL = @"";
 }
 
 - (void)startUpload:(NSArray *)files {
     
     id obj = [files objectAtIndex:0];
-    
-    NSData *imageData = [NSData dataWithContentsOfFile:obj];
     NSString *filename = [NSString stringWithFormat:@"%@", obj];
+    filename = [filename stringByReplacingOccurrencesOfString:@"file://localhost" withString:@""];
+    
+    NSData *imageData = [NSData dataWithContentsOfFile:filename];
     
     if (imageData == nil)
         return;
@@ -88,31 +92,32 @@
     // Completion handler
     operation.completionHandler = ^(NSURLResponse *response, NSData *data, NSError *error) {
         
-        dropView.working = NO;
-        [dropView setNeedsDisplay:YES];
+        _statusItemView.working = NO;
+        [_statusItemView setNeedsDisplay:YES];
         
         NSString *returnString = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
         if (!error) {
             [[NSPasteboard generalPasteboard] clearContents];
             [[NSPasteboard generalPasteboard] setString:returnString forType:NSStringPboardType];
+            lastUploadURL = returnString;
             // Send a notification to notification center, if it's available
+            [[NSSound soundNamed:@"Pop"] play];
             if ([NSUserNotification class] && [NSUserNotificationCenter class]){
                 
                 NSUserNotification *notification = [[NSUserNotification alloc] init];
                 notification.title = @"Upload finished!";
                 notification.informativeText = returnString;
                 notification.hasActionButton = NO;
-                notification.soundName = @"Pop";
                 [[NSUserNotificationCenter defaultUserNotificationCenter] deliverNotification:notification];
             }
         } else {
             // Send a notification to notification center, if it's available
+            [[NSSound soundNamed:@"Submarine"] play];
             if ([NSUserNotification class] && [NSUserNotificationCenter class]){
                 NSUserNotification *notification = [[NSUserNotification alloc] init];
                 notification.title = @"Upload failed!";
                 notification.informativeText = returnString;
                 notification.hasActionButton = NO;
-                notification.soundName = @"Submarine";
                 [[NSUserNotificationCenter defaultUserNotificationCenter] deliverNotification:notification];
             }
         }
@@ -122,14 +127,17 @@
     // Progress handler
     operation.uploadProgressHandler = ^(float progress, NSInteger bytesTransferred, NSInteger totalBytes) {
         
-        dropView.progress = progress;
+        NSLog(@"%f", progress);
+        _statusItemView.progress = progress;
         if (progress < 1){
-            dropView.working = YES;
+            _statusItemView.working = YES;
         }
         
-        [dropView setNeedsDisplay:YES];
+        [_statusItemView setNeedsDisplay:YES];
         
     };
+    _statusItemView.working = YES;
+    [_statusItemView setNeedsDisplay:YES];
     
     // Add operation to queue
     [[RequestQueue mainQueue] addOperation:operation];
@@ -205,6 +213,29 @@
     } else {
         LaunchAtLoginController *launchController = [[LaunchAtLoginController alloc] init];
         [launchController setLaunchAtLogin:NO];
+    }
+}
+
+- (IBAction)uploadFinderSelection:(id)sender {
+    FinderApplication * finder = [SBApplication applicationWithBundleIdentifier:@"com.apple.finder"];
+    SBElementArray * selection = [[finder selection] get];
+    
+    NSArray * items = [selection arrayByApplyingSelector:@selector(URL)];
+    [self startUpload:items];
+}
+
+- (NSStatusItem *)statusItem
+{
+    return self.statusItemView.statusItem;
+}
+
+- (void)copyLastUploadURL {
+    if ([lastUploadURL isEqualToString:@""]){
+        
+    } else {
+        [[NSSound soundNamed:@"Pop"] play];
+        [[NSPasteboard generalPasteboard] clearContents];
+        [[NSPasteboard generalPasteboard] setString:lastUploadURL forType:NSStringPboardType];
     }
 }
 

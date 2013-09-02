@@ -7,17 +7,27 @@
 //
 
 #import <Cocoa/Cocoa.h>
-#import "DADropStatus.h"
+#import "StatusItemView.h"
+#import "RequestQueue.h"
+#import "LaunchAtLoginController.h"
+#import "Finder.h"
+#import "MASShortcutView.h"
+#import "MASShortcutView+UserDefaults.h"
+#import "MASShortcut+UserDefaults.h"
+#import "MASShortcut+Monitoring.h"
 
 @interface AppDelegate : NSObject <NSApplicationDelegate, NSUserNotificationCenterDelegate> {
-    NSStatusItem *statusItem;
-    NSImage *statusImage;
-    NSImage *statusImageHighlighted;
     NSOperationQueue *queue;
-    DADropStatus *dropView;
-    __weak NSMenu *_menu;
+    NSString *lastUploadURL;
+    
+@private;
+    StatusItemView *statusItem;
+    StatusItemView *_statusItemView;
 }
 
+
+@property (nonatomic, readonly) StatusItemView *statusItem;
+@property (nonatomic, readonly) StatusItemView *statusItemView;
 @property (assign) IBOutlet NSWindow *window;
 @property (weak) IBOutlet NSMenu *menu;
 @property (weak) IBOutlet NSTextField *dewdropServer;
@@ -26,10 +36,13 @@
 @property (weak) IBOutlet NSButton *verifyButton;
 @property (weak) IBOutlet NSProgressIndicator *verifyProgressIndicator;
 @property (weak) IBOutlet NSButton *launchOnLogin;
+@property (weak) IBOutlet MASShortcutView *shortcutView;
 
 - (void)startUpload:(NSArray *)files;
+- (void)copyLastUploadURL;
 - (IBAction)verifyDetails:(id)sender;
 - (IBAction)openPreferences:(id)sender;
 - (IBAction)setAppLaunchOnLogin:(id)sender;
+- (IBAction)uploadFinderSelection:(id)sender;
 
 @end
