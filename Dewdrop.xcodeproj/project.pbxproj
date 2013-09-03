@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		14898DD317D5407B001D55FC /* Sparkle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 14898DD217D5407B001D55FC /* Sparkle.framework */; };
+		14898DD517D542E0001D55FC /* Sparkle.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 14898DD217D5407B001D55FC /* Sparkle.framework */; };
+		14898DD717D5BC7E001D55FC /* dsa_pub.pem in Resources */ = {isa = PBXBuildFile; fileRef = 14898DD617D5BC7E001D55FC /* dsa_pub.pem */; };
 		14BC84BE17C7BFAC007A223E /* Icon.iconset in Resources */ = {isa = PBXBuildFile; fileRef = 14BC84BD17C7BFAC007A223E /* Icon.iconset */; };
 		14C0C43D17D47B0100C982DC /* StatusItemView.m in Sources */ = {isa = PBXBuildFile; fileRef = 14C0C43C17D47B0100C982DC /* StatusItemView.m */; };
 		14C0C44617D499ED00C982DC /* ScriptingBridge.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 14C0C44517D499ED00C982DC /* ScriptingBridge.framework */; };
@@ -27,7 +30,22 @@
 		14D9321F17C4A2530000C3CB /* RequestQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 14D9321E17C4A1810000C3CB /* RequestQueue.m */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		14898DD417D542CE001D55FC /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				14898DD517D542E0001D55FC /* Sparkle.framework in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
+		14898DD217D5407B001D55FC /* Sparkle.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Sparkle.framework; sourceTree = "<group>"; };
+		14898DD617D5BC7E001D55FC /* dsa_pub.pem */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = dsa_pub.pem; sourceTree = "<group>"; };
 		14BC84BD17C7BFAC007A223E /* Icon.iconset */ = {isa = PBXFileReference; lastKnownFileType = folder.iconset; path = Icon.iconset; sourceTree = "<group>"; };
 		14C0C43B17D47B0100C982DC /* StatusItemView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StatusItemView.h; sourceTree = "<group>"; };
 		14C0C43C17D47B0100C982DC /* StatusItemView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StatusItemView.m; sourceTree = "<group>"; };
@@ -72,6 +90,7 @@
 				14C0C45D17D4A48E00C982DC /* Carbon.framework in Frameworks */,
 				14C0C44617D499ED00C982DC /* ScriptingBridge.framework in Frameworks */,
 				14D931F717C3EA0D0000C3CB /* Cocoa.framework in Frameworks */,
+				14898DD317D5407B001D55FC /* Sparkle.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -81,6 +100,7 @@
 		14C0C43E17D47CB700C982DC /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				14898DD617D5BC7E001D55FC /* dsa_pub.pem */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -128,6 +148,7 @@
 		14D931F517C3EA0D0000C3CB /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				14898DD217D5407B001D55FC /* Sparkle.framework */,
 				14C0C44517D499ED00C982DC /* ScriptingBridge.framework */,
 				14D931F617C3EA0D0000C3CB /* Cocoa.framework */,
 				14D931F817C3EA0D0000C3CB /* Other Frameworks */,
@@ -192,6 +213,7 @@
 				14D931EF17C3EA0D0000C3CB /* Sources */,
 				14D931F017C3EA0D0000C3CB /* Frameworks */,
 				14D931F117C3EA0D0000C3CB /* Resources */,
+				14898DD417D542CE001D55FC /* CopyFiles */,
 			);
 			buildRules = (
 			);
@@ -238,6 +260,7 @@
 				14BC84BE17C7BFAC007A223E /* Icon.iconset in Resources */,
 				14C0C45517D4A21600C982DC /* LICENSE in Resources */,
 				14C0C45B17D4A21600C982DC /* README.md in Resources */,
+				14898DD717D5BC7E001D55FC /* dsa_pub.pem in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -346,6 +369,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)\"",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Dewdrop/Dewdrop-Prefix.pch";
 				INFOPLIST_FILE = "Dewdrop/Dewdrop-Info.plist";
@@ -359,6 +386,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)\"",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Dewdrop/Dewdrop-Prefix.pch";
 				INFOPLIST_FILE = "Dewdrop/Dewdrop-Info.plist";

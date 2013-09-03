@@ -60,9 +60,11 @@
         [[NSColor selectedMenuItemColor] set];
         NSBezierPath *selectedRect = [NSBezierPath bezierPathWithRect:dirtyRect];
         [selectedRect fill];
+        [[NSColor whiteColor] set]; // Set a white color, since this is selected
+    } else {
+        [[NSColor blackColor] set];
     }
     
-    [[NSColor blackColor] set];
     [textViewSurround stroke];
     if (_isHovered){
         [[NSColor alternateSelectedControlColor] set];
