@@ -3,6 +3,7 @@
 
 @implementation StatusItemView
 
+#pragma mark Properties
 @synthesize statusItem = _statusItem;
 @synthesize image = _image;
 @synthesize alternateImage = _alternateImage;
@@ -159,6 +160,14 @@
 - (void)draggingExited:(id < NSDraggingInfo >)sender {
     _isHovered = NO;
     [self setNeedsDisplay:YES];
+}
+
+- (void)draggingEnded:(id<NSDraggingInfo>)sender
+{
+    if(NSPointInRect([sender draggingLocation],self.frame)){
+        //The file was actually dropped on the view so call the performDrag manually
+        [self performDragOperation:sender];
+    }
 }
 
 //perform the drag and log the files that are dropped

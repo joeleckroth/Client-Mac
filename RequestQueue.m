@@ -294,7 +294,7 @@ NSString *const HTTPResponseErrorDomain = @"HTTPResponseErrorDomain";
 {
     if (!_allowDuplicateRequests)
     {
-        for (int i = [_operations count] - 1; i >= 0 ; i--)
+        for (int i = (int)[_operations count] - 1; i >= 0 ; i--)
         {
             RQOperation *_operation = _operations[i];
             if ([_operation.request isEqual:operation.request])
@@ -341,7 +341,7 @@ NSString *const HTTPResponseErrorDomain = @"HTTPResponseErrorDomain";
 
 - (void)cancelRequest:(NSURLRequest *)request
 {
-    for (int i = [_operations count] - 1; i >= 0 ; i--)
+    for (int i = (int)[_operations count] - 1; i >= 0 ; i--)
     {
         RQOperation *operation = _operations[i];
         if (operation.request == request)
