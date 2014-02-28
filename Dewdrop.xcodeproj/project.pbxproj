@@ -10,6 +10,7 @@
 		14898DD317D5407B001D55FC /* Sparkle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 14898DD217D5407B001D55FC /* Sparkle.framework */; };
 		14898DD517D542E0001D55FC /* Sparkle.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 14898DD217D5407B001D55FC /* Sparkle.framework */; };
 		14898DD717D5BC7E001D55FC /* dsa_pub.pem in Resources */ = {isa = PBXBuildFile; fileRef = 14898DD617D5BC7E001D55FC /* dsa_pub.pem */; };
+		1493DCB61820E9050004343F /* NSBezierPath+StrokeExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 1493DCB51820E9050004343F /* NSBezierPath+StrokeExtensions.m */; };
 		14BC84BE17C7BFAC007A223E /* Icon.iconset in Resources */ = {isa = PBXBuildFile; fileRef = 14BC84BD17C7BFAC007A223E /* Icon.iconset */; };
 		14C0C43D17D47B0100C982DC /* StatusItemView.m in Sources */ = {isa = PBXBuildFile; fileRef = 14C0C43C17D47B0100C982DC /* StatusItemView.m */; };
 		14C0C44617D499ED00C982DC /* ScriptingBridge.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 14C0C44517D499ED00C982DC /* ScriptingBridge.framework */; };
@@ -46,6 +47,8 @@
 /* Begin PBXFileReference section */
 		14898DD217D5407B001D55FC /* Sparkle.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Sparkle.framework; sourceTree = "<group>"; };
 		14898DD617D5BC7E001D55FC /* dsa_pub.pem */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = dsa_pub.pem; sourceTree = "<group>"; };
+		1493DCB41820E9050004343F /* NSBezierPath+StrokeExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSBezierPath+StrokeExtensions.h"; sourceTree = "<group>"; };
+		1493DCB51820E9050004343F /* NSBezierPath+StrokeExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSBezierPath+StrokeExtensions.m"; sourceTree = "<group>"; };
 		14BC84BD17C7BFAC007A223E /* Icon.iconset */ = {isa = PBXFileReference; lastKnownFileType = folder.iconset; path = Icon.iconset; sourceTree = "<group>"; };
 		14C0C43B17D47B0100C982DC /* StatusItemView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StatusItemView.h; sourceTree = "<group>"; };
 		14C0C43C17D47B0100C982DC /* StatusItemView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StatusItemView.m; sourceTree = "<group>"; };
@@ -97,6 +100,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		145DDDAC182174F8003797A6 /* NSBezierPath+StrokeExtensions */ = {
+			isa = PBXGroup;
+			children = (
+				1493DCB41820E9050004343F /* NSBezierPath+StrokeExtensions.h */,
+				1493DCB51820E9050004343F /* NSBezierPath+StrokeExtensions.m */,
+			);
+			name = "NSBezierPath+StrokeExtensions";
+			sourceTree = "<group>";
+		};
 		14C0C43E17D47CB700C982DC /* Resources */ = {
 			isa = PBXGroup;
 			children = (
@@ -191,6 +203,7 @@
 		14D9321C17C4A1750000C3CB /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				145DDDAC182174F8003797A6 /* NSBezierPath+StrokeExtensions */,
 				14C0C44817D4A21600C982DC /* MASShortcut */,
 				14D7BE6617C7FFC500ED6095 /* LaunchAtLoginController.h */,
 				14D7BE6717C7FFC500ED6095 /* LaunchAtLoginController.m */,
@@ -214,6 +227,7 @@
 				14D931F017C3EA0D0000C3CB /* Frameworks */,
 				14D931F117C3EA0D0000C3CB /* Resources */,
 				14898DD417D542CE001D55FC /* CopyFiles */,
+				1450E80E18C08C0200338249 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -266,6 +280,22 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		1450E80E18C08C0200338249 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "LOCATION=\"${BUILT_PRODUCTS_DIR}\"/\"${FRAMEWORKS_FOLDER_PATH}\"\nIDENTITY=\"3rd Party Mac Developer Application\"\ncodesign --verbose --force --sign \"$IDENTITY\" \"$LOCATION/Sparkle.framework/Versions/A\"";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		14D931EF17C3EA0D0000C3CB /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -277,6 +307,7 @@
 				14D7BE6817C7FFC500ED6095 /* LaunchAtLoginController.m in Sources */,
 				14C0C43D17D47B0100C982DC /* StatusItemView.m in Sources */,
 				14C0C45617D4A21600C982DC /* MASShortcut+Monitoring.m in Sources */,
+				1493DCB61820E9050004343F /* NSBezierPath+StrokeExtensions.m in Sources */,
 				14C0C45717D4A21600C982DC /* MASShortcut+UserDefaults.m in Sources */,
 				14C0C45817D4A21600C982DC /* MASShortcut.m in Sources */,
 				14C0C45917D4A21600C982DC /* MASShortcutView+UserDefaults.m in Sources */,
@@ -366,6 +397,7 @@
 		14D9321117C3EA0D0000C3CB /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "3rd Party Mac Developer Application: Dino Angelov (DYTG5FZAZY)";
 				COMBINE_HIDPI_IMAGES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -376,6 +408,7 @@
 				INFOPLIST_FILE = "Dewdrop/Dewdrop-Info.plist";
 				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "75046656-C67E-46B1-8B7F-4B568E9A95D8";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -383,6 +416,8 @@
 		14D9321217C3EA0D0000C3CB /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				"CODE_SIGN_ENTITLEMENTS[sdk=*]" = "";
+				CODE_SIGN_IDENTITY = "3rd Party Mac Developer Application: Dino Angelov (DYTG5FZAZY)";
 				COMBINE_HIDPI_IMAGES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -393,6 +428,7 @@
 				INFOPLIST_FILE = "Dewdrop/Dewdrop-Info.plist";
 				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "75046656-C67E-46B1-8B7F-4B568E9A95D8";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

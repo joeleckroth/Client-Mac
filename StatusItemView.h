@@ -1,5 +1,6 @@
 #import <Cocoa/Cocoa.h>
 #import "Finder.h"
+#import "NSBezierPath+StrokeExtensions.h"
 
 @interface StatusItemView : NSView <NSMenuDelegate> {
 @private

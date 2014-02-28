@@ -12,10 +12,18 @@
 
 @synthesize statusItemView = _statusItemView;
 
+- (void)applicationWillTerminate:(NSNotification *)notification {
+    [query stopQuery];
+    [query setDelegate:nil];
+    query = nil;
+
+    [self setQueryResults:nil];
+}
+
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
     // Install icon into the menu bar
-    NSStatusItem *stockStatusItem = [[NSStatusBar systemStatusBar] statusItemWithLength:24];
+    NSStatusItem *stockStatusItem = [[NSStatusBar systemStatusBar] statusItemWithLength:42];
     _statusItemView = [[StatusItemView alloc] initWithStatusItem:stockStatusItem];
     [_statusItemView setMenu:_menu];
     
@@ -31,11 +39,35 @@
     [MASShortcut registerGlobalShortcutWithUserDefaultsKey:@"GlobalShortcut" handler:^{
         [self uploadFinderSelection:self];
     }];
-    
+
+    // Reset some variables
     lastUploadURL = @"";
+    lastUploadOperationDate = 0;
+
+    // Disable App Nap under Mavericks
+    if ([[NSProcessInfo processInfo] respondsToSelector:@selector(beginActivityWithOptions:reason:)]) {
+        self.activity = [[NSProcessInfo processInfo] beginActivityWithOptions:0x00FFFFFF reason:@"have to do it, otherwise menubar icon becomes unresponsive and you cant drop items + we need to monitor for screenshots"];
+    }
+
+    // Setup code for monitoring for screenshots
+    query = [[NSMetadataQuery alloc] init];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(queryUpdated:) name:NSMetadataQueryDidStartGatheringNotification object:query];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(queryUpdated:) name:NSMetadataQueryDidUpdateNotification object:query];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(queryUpdated:) name:NSMetadataQueryDidFinishGatheringNotification object:query];
+    [query setDelegate:self];
+    [query setPredicate:[NSPredicate predicateWithFormat:@"kMDItemIsScreenCapture = 1"]];
+    if ([_checkboxAutoUploadScreenshots state] == 1) {
+        [query startQuery];
+    }
+
 }
 
-- (void)startUpload:(NSArray *)files {
+- (void)startUpload:(NSArray *)files deleteAfterUploading:(BOOL)delete {
+
+    if ([NSDate timeIntervalSinceReferenceDate] - lastUploadOperationDate < 1) {
+        return;
+    }
+    lastUploadOperationDate = [NSDate timeIntervalSinceReferenceDate];
     
     id obj = [files objectAtIndex:0];
     NSString *filename = [NSString stringWithFormat:@"%@", obj];
@@ -100,6 +132,10 @@
             [[NSPasteboard generalPasteboard] clearContents];
             [[NSPasteboard generalPasteboard] setString:returnString forType:NSStringPboardType];
             lastUploadURL = returnString;
+            // Remove the screenshot file, if needed
+            if (delete) {
+                [[NSFileManager defaultManager] removeItemAtPath:filename error:nil];
+            }
             // Send a notification to notification center, if it's available
             [[NSSound soundNamed:@"Pop"] play];
             if ([NSUserNotification class] && [NSUserNotificationCenter class]){
@@ -127,7 +163,6 @@
     // Progress handler
     operation.uploadProgressHandler = ^(float progress, NSInteger bytesTransferred, NSInteger totalBytes) {
         
-        NSLog(@"%f", progress);
         _statusItemView.progress = progress;
         if (progress < 1){
             _statusItemView.working = YES;
@@ -221,7 +256,15 @@
     SBElementArray * selection = [[finder selection] get];
     
     NSArray * items = [selection arrayByApplyingSelector:@selector(URL)];
-    [self startUpload:items];
+    [self startUpload:items deleteAfterUploading:NO];
+}
+
+- (IBAction)toggleAutoScreenshotUpload:(id)sender {
+    if ([_checkboxAutoUploadScreenshots state] == 1) {
+        [query startQuery];
+    } else {
+        [query stopQuery];
+    }
 }
 
 - (NSStatusItem *)statusItem
@@ -231,11 +274,23 @@
 
 - (void)copyLastUploadURL {
     if ([lastUploadURL isEqualToString:@""]){
-        
+
     } else {
         [[NSSound soundNamed:@"Pop"] play];
         [[NSPasteboard generalPasteboard] clearContents];
         [[NSPasteboard generalPasteboard] setString:lastUploadURL forType:NSStringPboardType];
+    }
+}
+
+- (NSString *)getLastUploadURL {
+    return lastUploadURL;
+}
+
+- (void)queryUpdated:(NSNotification *)note {
+    NSMetadataItem *item = [[note.userInfo objectForKey:(NSString *)kMDQueryUpdateAddedItems] lastObject];
+    if (item) {
+        NSString *screenShotPath = [item valueForAttribute:NSMetadataItemPathKey];
+        [self startUpload:[NSMutableArray arrayWithObject:screenShotPath] deleteAfterUploading:[_checkboxRemoveScreenshotsAfterUpload state]];
     }
 }
 
