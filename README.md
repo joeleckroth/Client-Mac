@@ -1,7 +1,10 @@
 Client-Mac
 ==========
 
-Dewdrop OS X Client. Droplr-like file sharing on your own hardware. 10.7 or higher required. Download the built binary at http://dewdrop.dangelov.com
+Dewdrop OS X Client. Droplr-like file sharing on your own hardware. 10.7 or higher required.
+
+Download the binary at http://dewdrop.dangelov.com or install it with [brew](http://caskroom.io/) via `brew cask install dewdrop`
+
 
 * New, unique/recognizable menubar icon
 * Automatic upload of screenshots option
